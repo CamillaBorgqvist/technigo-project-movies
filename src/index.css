@@ -11,3 +11,158 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/*LIST*/
+
+.movie-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.movie-card {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+.movie-image {
+  display: block;
+  width: 100%; 
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover .movie-image {
+  transform: scale(1.05);
+}
+
+.hover-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+
+.hover-details h2{
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+
+.hover-details p{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.movie-card:hover .hover-details {
+  opacity: 1;
+}
+
+@media (min-width: 600px) {
+  .movie-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .movie-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .movie-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+/*DETAILS*/
+
+.background {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.button-container{
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  z-index: 2;
+}
+
+.button-back{
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.1s ease;
+  display: inline-block;  
+}
+
+.button-back:hover{
+  transform: scale(1.05);
+}
+
+.movie-summary {
+  padding: 40px;
+}
+
+/* overlay for better readibility*/
+.background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5); 
+}
+
+/*over the overlay*/
+.poster-image, .details-text {
+  position: relative;
+  z-index: 1;
+}
+
+.poster-image {
+  border-radius: 10px;
+  border: 2px solid white;
+  max-width: 150px;
+}
+
+.details-text {
+  max-width: 300px;
+  color: white;
+}
+
+.details-text h1{
+  font-size: 25px;
+}
+
+@media (min-width: 667px){
+  .poster-image {
+    max-width: 250px;
+  }
+
+  .details-text {
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  } 
+
+  .movie-summary {
+    display: flex;
+    gap: 30px;
+  }
+}
